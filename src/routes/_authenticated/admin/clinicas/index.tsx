@@ -237,8 +237,8 @@ function ClinicasPage() {
             <div>
               <h2 className="text-sm font-semibold">Nova clínica</h2>
               <p className="text-xs text-muted-foreground">
-                A clínica é criada junto com o primeiro usuário administrador, que recebe convite por
-                e-mail.
+                A clínica é criada junto com o primeiro usuário administrador, que recebe convite
+                por e-mail.
               </p>
             </div>
 

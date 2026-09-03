@@ -313,9 +313,7 @@ function DetalheClinica() {
                     <td>{ROLE_LABEL[u.role as Role]}</td>
                     <td>{u.cro ?? "—"}</td>
                     <td>{u.especialidade ?? "—"}</td>
-                    <td>
-                      {u.ativo ? <Badge tom="sucesso">Ativo</Badge> : <Badge>Inativo</Badge>}
-                    </td>
+                    <td>{u.ativo ? <Badge tom="sucesso">Ativo</Badge> : <Badge>Inativo</Badge>}</td>
                     <td className="text-right">
                       <button
                         onClick={() => alternarUsuario.mutate({ userId: u.id, ativo: !u.ativo })}
