@@ -10,33 +10,193 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as DefinirSenhaRouteImport } from './routes/definir-senha'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SetupRouteImport } from './routes/setup'
+import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
+import { Route as AuthenticatedAppRouteRouteImport } from './routes/_authenticated/app/route'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin/usuarios'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app/index'
+import { Route as AuthenticatedAdminClinicasIndexRouteImport } from './routes/_authenticated/admin/clinicas/index'
+import { Route as AuthenticatedAdminClinicasIdRouteImport } from './routes/_authenticated/admin/clinicas/$id'
+import { Route as AuthenticatedAppConfiguracoesClinicaRouteImport } from './routes/_authenticated/app/configuracoes/clinica'
+import { Route as AuthenticatedAppConfiguracoesUsuariosRouteImport } from './routes/_authenticated/app/configuracoes/usuarios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DefinirSenhaRoute = DefinirSenhaRouteImport.update({
+  id: '/definir-senha',
+  path: '/definir-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAppRouteRoute = AuthenticatedAppRouteRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminUsuariosRoute =
+  AuthenticatedAdminUsuariosRouteImport.update({
+    id: '/usuarios',
+    path: '/usuarios',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAdminClinicasIndexRoute =
+  AuthenticatedAdminClinicasIndexRouteImport.update({
+    id: '/clinicas/',
+    path: '/clinicas/',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminClinicasIdRoute =
+  AuthenticatedAdminClinicasIdRouteImport.update({
+    id: '/clinicas/$id',
+    path: '/clinicas/$id',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAppConfiguracoesClinicaRoute =
+  AuthenticatedAppConfiguracoesClinicaRouteImport.update({
+    id: '/configuracoes/clinica',
+    path: '/configuracoes/clinica',
+    getParentRoute: () => AuthenticatedAppRouteRoute,
+  } as any)
+const AuthenticatedAppConfiguracoesUsuariosRoute =
+  AuthenticatedAppConfiguracoesUsuariosRouteImport.update({
+    id: '/configuracoes/usuarios',
+    path: '/configuracoes/usuarios',
+    getParentRoute: () => AuthenticatedAppRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/definir-senha': typeof DefinirSenhaRoute
+  '/login': typeof LoginRoute
+  '/setup': typeof SetupRoute
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/app': typeof AuthenticatedAppRouteRouteWithChildren
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/app/': typeof AuthenticatedAppIndexRoute
+  '/admin/clinicas/$id': typeof AuthenticatedAdminClinicasIdRoute
+  '/app/configuracoes/clinica': typeof AuthenticatedAppConfiguracoesClinicaRoute
+  '/app/configuracoes/usuarios': typeof AuthenticatedAppConfiguracoesUsuariosRoute
+  '/admin/clinicas/': typeof AuthenticatedAdminClinicasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/definir-senha': typeof DefinirSenhaRoute
+  '/login': typeof LoginRoute
+  '/setup': typeof SetupRoute
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/app': typeof AuthenticatedAppIndexRoute
+  '/admin/clinicas/$id': typeof AuthenticatedAdminClinicasIdRoute
+  '/app/configuracoes/clinica': typeof AuthenticatedAppConfiguracoesClinicaRoute
+  '/app/configuracoes/usuarios': typeof AuthenticatedAppConfiguracoesUsuariosRoute
+  '/admin/clinicas': typeof AuthenticatedAdminClinicasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/definir-senha': typeof DefinirSenhaRoute
+  '/login': typeof LoginRoute
+  '/setup': typeof SetupRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/_authenticated/app': typeof AuthenticatedAppRouteRouteWithChildren
+  '/_authenticated/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
+  '/_authenticated/admin/clinicas/$id': typeof AuthenticatedAdminClinicasIdRoute
+  '/_authenticated/app/configuracoes/clinica': typeof AuthenticatedAppConfiguracoesClinicaRoute
+  '/_authenticated/app/configuracoes/usuarios': typeof AuthenticatedAppConfiguracoesUsuariosRoute
+  '/_authenticated/admin/clinicas/': typeof AuthenticatedAdminClinicasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/definir-senha'
+    | '/login'
+    | '/setup'
+    | '/admin'
+    | '/app'
+    | '/admin/usuarios'
+    | '/admin/'
+    | '/app/'
+    | '/admin/clinicas/$id'
+    | '/app/configuracoes/clinica'
+    | '/app/configuracoes/usuarios'
+    | '/admin/clinicas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/definir-senha'
+    | '/login'
+    | '/setup'
+    | '/admin/usuarios'
+    | '/admin'
+    | '/app'
+    | '/admin/clinicas/$id'
+    | '/app/configuracoes/clinica'
+    | '/app/configuracoes/usuarios'
+    | '/admin/clinicas'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/definir-senha'
+    | '/login'
+    | '/setup'
+    | '/_authenticated/admin'
+    | '/_authenticated/app'
+    | '/_authenticated/admin/usuarios'
+    | '/_authenticated/admin/'
+    | '/_authenticated/app/'
+    | '/_authenticated/admin/clinicas/$id'
+    | '/_authenticated/app/configuracoes/clinica'
+    | '/_authenticated/app/configuracoes/usuarios'
+    | '/_authenticated/admin/clinicas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  DefinirSenhaRoute: typeof DefinirSenhaRoute
+  LoginRoute: typeof LoginRoute
+  SetupRoute: typeof SetupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +208,158 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/definir-senha': {
+      id: '/definir-senha'
+      path: '/definir-senha'
+      fullPath: '/definir-senha'
+      preLoaderRoute: typeof DefinirSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/app': {
+      id: '/_authenticated/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthenticatedAppRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/usuarios': {
+      id: '/_authenticated/admin/usuarios'
+      path: '/usuarios'
+      fullPath: '/admin/usuarios'
+      preLoaderRoute: typeof AuthenticatedAdminUsuariosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/admin/clinicas/': {
+      id: '/_authenticated/admin/clinicas/'
+      path: '/clinicas'
+      fullPath: '/admin/clinicas/'
+      preLoaderRoute: typeof AuthenticatedAdminClinicasIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/clinicas/$id': {
+      id: '/_authenticated/admin/clinicas/$id'
+      path: '/clinicas/$id'
+      fullPath: '/admin/clinicas/$id'
+      preLoaderRoute: typeof AuthenticatedAdminClinicasIdRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/app/configuracoes/clinica': {
+      id: '/_authenticated/app/configuracoes/clinica'
+      path: '/configuracoes/clinica'
+      fullPath: '/app/configuracoes/clinica'
+      preLoaderRoute: typeof AuthenticatedAppConfiguracoesClinicaRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/configuracoes/usuarios': {
+      id: '/_authenticated/app/configuracoes/usuarios'
+      path: '/configuracoes/usuarios'
+      fullPath: '/app/configuracoes/usuarios'
+      preLoaderRoute: typeof AuthenticatedAppConfiguracoesUsuariosRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteRouteChildren {
+  AuthenticatedAdminUsuariosRoute: typeof AuthenticatedAdminUsuariosRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminClinicasIdRoute: typeof AuthenticatedAdminClinicasIdRoute
+  AuthenticatedAdminClinicasIndexRoute: typeof AuthenticatedAdminClinicasIndexRoute
+}
+
+const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
+  {
+    AuthenticatedAdminUsuariosRoute: AuthenticatedAdminUsuariosRoute,
+    AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+    AuthenticatedAdminClinicasIdRoute: AuthenticatedAdminClinicasIdRoute,
+    AuthenticatedAdminClinicasIndexRoute: AuthenticatedAdminClinicasIndexRoute,
+  }
+
+const AuthenticatedAdminRouteRouteWithChildren =
+  AuthenticatedAdminRouteRoute._addFileChildren(
+    AuthenticatedAdminRouteRouteChildren,
+  )
+
+interface AuthenticatedAppRouteRouteChildren {
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
+  AuthenticatedAppConfiguracoesClinicaRoute: typeof AuthenticatedAppConfiguracoesClinicaRoute
+  AuthenticatedAppConfiguracoesUsuariosRoute: typeof AuthenticatedAppConfiguracoesUsuariosRoute
+}
+
+const AuthenticatedAppRouteRouteChildren: AuthenticatedAppRouteRouteChildren = {
+  AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
+  AuthenticatedAppConfiguracoesClinicaRoute:
+    AuthenticatedAppConfiguracoesClinicaRoute,
+  AuthenticatedAppConfiguracoesUsuariosRoute:
+    AuthenticatedAppConfiguracoesUsuariosRoute,
+}
+
+const AuthenticatedAppRouteRouteWithChildren =
+  AuthenticatedAppRouteRoute._addFileChildren(
+    AuthenticatedAppRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
+  AuthenticatedAppRouteRoute: typeof AuthenticatedAppRouteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
+  AuthenticatedAppRouteRoute: AuthenticatedAppRouteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  DefinirSenhaRoute: DefinirSenhaRoute,
+  LoginRoute: LoginRoute,
+  SetupRoute: SetupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
