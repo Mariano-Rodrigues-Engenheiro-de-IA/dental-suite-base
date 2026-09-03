@@ -392,13 +392,15 @@ export function Campo({
   obrigatorio?: boolean;
   className?: string;
 }) {
+  const id = useId();
   return (
     <div className={className}>
-      <label className="mb-1 block text-xs font-medium">
+      <label htmlFor={id} className="mb-1 block text-xs font-medium">
         {label}
         {obrigatorio && <span className="text-destructive"> *</span>}
       </label>
       <input
+        id={id}
         type={tipo}
         required={obrigatorio}
         value={valor}
