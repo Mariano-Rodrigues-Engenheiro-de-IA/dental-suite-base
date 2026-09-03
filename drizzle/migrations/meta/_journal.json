@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1788470340090,
+      "tag": "0000_fundacao_multitenant_clinicas",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788470375628,
+      "tag": "0001_remove_auth_trigger",
+      "breakpoints": true
+    }
+  ]
+}
