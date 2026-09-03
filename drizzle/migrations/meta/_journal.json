@@ -15,6 +15,13 @@
       "when": 1788470375628,
       "tag": "0001_remove_auth_trigger",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788471146380,
+      "tag": "0002_restringir_execute_funcoes",
+      "breakpoints": true
     }
   ]
 }
