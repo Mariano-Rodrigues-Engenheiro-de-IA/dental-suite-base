@@ -69,7 +69,7 @@ function SetupPage() {
         </div>
         {(["nome", "email", "senha"] as const).map((campo) => (
           <div key={campo}>
-            <label htmlFor={campo} className="mb-1 block text-xs font-medium capitalize">
+            <label htmlFor={campo} className="mb-1 block text-xs font-medium first-letter:uppercase">
               {campo === "senha" ? "Senha (mínimo 8 caracteres)" : campo}
             </label>
             <input
